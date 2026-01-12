@@ -5,5 +5,9 @@ is possible because of the OpenMeteo API, which provides hourly conditions. Our 
 precipitation, and humidity trends.
 
 
-https://github.com/user-attachments/assets/a6d684a1-c443-4b2c-a13e-b4a68bc5d29c
+
+
+https://github.com/user-attachments/assets/b218c79b-476f-4a35-b55e-305940b4574b
+
+
 
