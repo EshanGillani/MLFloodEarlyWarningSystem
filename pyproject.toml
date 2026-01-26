@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "karachiFloodMLModel"
+version = "0.1.0"
+description = "Short description of your package"
+readme = "Uses the OpenMeteo API and a Random Forest Model to predict risk for flooding in Karachi, Pakistan."
+requires-python = ">=3.8"
+authors = [{ name = "EshanGillani" }]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
