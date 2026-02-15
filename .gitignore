@@ -1,0 +1,19 @@
+# Environment variables (contain secrets)
+.env*
+.env.local
+.env.production
+
+# Python
+__pycache__/
+*.py[cod]
+.cache/
+*.joblib
+
+# Node
+node_modules/
+.next/
+out/
+
+# OS
+.DS_Store
+Thumbs.db
