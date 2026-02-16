@@ -24,6 +24,8 @@ This tool is designed for climate‑resilience projects, early‑warning systems
 ## Demo
 I've developed a front-end that's deployed (frontend through Vercel and backend through Railway)
 You can visit it here: https://ml-flood-early-warning-system.vercel.app/
+When using the demo, **don't click demo mode** or you won't get the live updates. Instead, it automatically refreshes every 20-30 seconds.
+
 
 ##  How It Works
 
