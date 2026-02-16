@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 from app.config import settings
 from app.services.database_service import DatabaseService
@@ -64,7 +64,10 @@ class IngestionService:
             # No data at all — backfill will handle it
             return 0
 
-        now = datetime.utcnow()
+        now = datetime.now(timezone.utc)
+        # Make latest timezone-aware if it isn't
+        if latest.tzinfo is None:
+            latest = latest.replace(tzinfo=timezone.utc)
         hours_missing = (now - latest).total_seconds() / 3600
 
         if hours_missing <= 1:
