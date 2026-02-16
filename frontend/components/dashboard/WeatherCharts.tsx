@@ -79,10 +79,11 @@ function MiniChart({
               <Tooltip
                 contentStyle={TOOLTIP_STYLE}
                 labelStyle={{ color: "#94a3b8" }}
-                formatter={(value: number) => [
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                formatter={((value: any) => [
                   `${value != null ? Number(value).toFixed(3) : "-"} ${unit}`,
                   title,
-                ]}
+                ]) as any}
               />
               <Area
                 type="monotone"
@@ -113,10 +114,11 @@ function MiniChart({
               <Tooltip
                 contentStyle={TOOLTIP_STYLE}
                 labelStyle={{ color: "#94a3b8" }}
-                formatter={(value: number) => [
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                formatter={((value: any) => [
                   `${value != null ? Number(value).toFixed(1) : "-"} ${unit}`,
                   title,
-                ]}
+                ]) as any}
               />
               <Line
                 type="monotone"
