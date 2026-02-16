@@ -36,8 +36,7 @@ You can visit it here: https://ml-flood-early-warning-system.vercel.app/
 4. The Random Forest model processes the features  
 5. It outputs:  
    - Flood‑risk label  
-   - Confidence score  
-   - Raw weather values used in the prediction  
+   - Map of area around the site.
 
 ## Contributing
 
@@ -52,7 +51,7 @@ You can contribute by:
 
 
 
-https://github.com/user-attachments/assets/b218c79b-476f-4a35-b55e-305940b4574b
+
 
 
 
