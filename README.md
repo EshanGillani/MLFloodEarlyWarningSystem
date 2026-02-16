@@ -21,36 +21,9 @@ It uses **hourly weather data** from the Open‑Meteo API and **historical flood
 
 This tool is designed for climate‑resilience projects, early‑warning systems, and real‑time monitoring dashboards.
 
-## Installation
-
-There are **two ways** to install the package:
-
-### **1. Install via PyPI (recommended)**
-
-Open your terminal (Windows PowerShell, macOS Terminal, or Linux shell) and enter:
-
-```bash
-pip install karachiFloodMLModel
-```
-
-The package and all dependencies will be installed automatically.
-
-### **2. Install from the PyPI website**
-
-1. Visit the project page:  
-   https://pypi.org/project/karachiFloodMLModel/#files  
-2. Download the `.whl` or `.tar.gz` file  
-3. Install manually using:
-
-```bash
-pip install <filename>.whl
-```
-
-or
-
-```bash
-pip install <filename>.tar.gz
-```
+## Demo
+I've developed a front-end that's deployed (frontend through Vercel and backend through Railway)
+You can visit it here: https://ml-flood-early-warning-system.vercel.app/
 
 ##  How It Works
 
@@ -65,62 +38,6 @@ pip install <filename>.tar.gz
    - Flood‑risk label  
    - Confidence score  
    - Raw weather values used in the prediction  
-
-
-##  Usage Example
-
-```python
-from karachiFloodMLModel import FloodPredictor
-
-predictor = FloodPredictor()
-
-result = predictor.get_live_flood_risk()
-
-print("Flood Risk Level:", result["risk"])
-print("Confidence:", result["confidence"])
-print("Weather Data Used:", result["weather"])
-```
-
-**Sample Output:**
-
-```
-Flood Risk Level: FLOOD WATCH
-Confidence: 0.82
-Weather Data Used: {
-    'pressure': 1004.2,
-    'humidity': 78,
-    'precipitation': 2.1,
-    'pressure_trend': -1.3
-}
-```
-
-##  API Requirements
-
-The package automatically calls the **Open‑Meteo API** — no API key required.
-
-If you want to use custom coordinates or override defaults:
-
-```python
-predictor = FloodPredictor(lat=24.8607, lon=67.0011)
-```
-
-## 🛠️ Troubleshooting
-
-### **pip install fails**
-Try upgrading pip:
-```bash
-pip install --upgrade pip
-```
-
-### **SSL or network errors**
-Your network may block API calls. Try:
-```python
-predictor = FloodPredictor(ssl_verify=False)
-```
-
-**Model returns None**
-This usually means the API returned incomplete data.  
-Wait a few minutes and retry — Open‑Meteo updates hourly.
 
 ## Contributing
 
