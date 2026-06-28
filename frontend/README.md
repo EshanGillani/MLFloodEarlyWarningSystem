@@ -1,22 +1,20 @@
 # Frontend — Karachi Flood Early Warning System
 
-Next.js (App Router) dashboard that consumes the FastAPI backend in [`../backend`](../backend).
+Optional Next.js (App Router) dashboard that visualizes predictions from the FastAPI
+backend in [`../backend`](../backend).
 
-## Setup
+> Most users don't need this. To just get flood predictions, run the standalone Python
+> script in [`../src/package`](../src/package) — see the root [README](../README.md).
 
-See the **root [README](../README.md)** for full local-setup and deployment instructions.
-
-Quick version:
+## Run the dashboard
 
 ```bash
 npm install
-cp .env.example .env.local   # optional — only if backend isn't on http://localhost:8000
+cp .env.example .env.local   # set NEXT_PUBLIC_API_URL if backend isn't on http://localhost:8000
 npm run dev
 ```
 
 Open http://localhost:3000.
-
-### Environment
 
 | Variable              | Default                 | Description                          |
 | --------------------- | ----------------------- | ------------------------------------ |
