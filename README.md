@@ -17,7 +17,7 @@ A hosted instance is available: https://ml-flood-early-warning-system.vercel.app
 
 > ⚠️ The hosted demo depends on a backend deployed on Railway. If the cards show as
 > permanent loading placeholders, the **hosted backend is down** — the code itself is fine.
-> Run it locally with the steps below (it works out of the box) or deploy your own backend.
+> Run the backend locally with the steps below or deploy your own.
 
 When the demo is up, **don't toggle Demo Mode** if you want live data — it auto-refreshes every ~15s.
 
@@ -34,24 +34,19 @@ MLFloodEarlyWarningSystem/
 └── README.md
 ```
 
-The two pieces you run are **`backend/`** (the API) and **`frontend/`** (the dashboard).
+This README covers running the **`backend/`** API. The `frontend/` dashboard is deployed
+separately — use the [live demo](#live-demo) to view it.
 
 ---
 
 ## Prerequisites
 
 - **Python 3.11** (see `backend/runtime.txt`)
-- **Node.js 18+** and npm (Next.js 16)
 - *(Optional)* a **PostgreSQL** database for persistent history — not required to run
 
 ---
 
 ## Quick start (local)
-
-The frontend defaults to `http://localhost:8000` and the backend defaults to that same port,
-so the two connect with **no configuration**. Open two terminals:
-
-### 1. Backend (terminal 1)
 
 ```bash
 cd backend
@@ -78,29 +73,9 @@ The API is now at **http://localhost:8000**. Quick checks:
 On first start with no database, it trains the model from the bundled legacy data
 and runs entirely in memory — that's expected.
 
-### 2. Frontend (terminal 2)
-
-```bash
-cd frontend
-npm install
-
-# Optional — only needed if your backend is NOT on http://localhost:8000
-cp .env.example .env.local
-
-npm run dev
-```
-
-Open **http://localhost:3000**. The dashboard will populate from your local backend.
-
 ---
 
 ## Configuration
-
-### Frontend — `frontend/.env.local`
-
-| Variable              | Default                 | Description                                                                 |
-| --------------------- | ----------------------- | --------------------------------------------------------------------------- |
-| `NEXT_PUBLIC_API_URL` | `http://localhost:8000` | Base URL of the backend API. **Must be set at build time** (see Vercel note). |
 
 ### Backend — `backend/.env`
 
@@ -116,12 +91,9 @@ See `backend/.env.example` for the full list. The Open-Meteo API requires **no k
 
 ---
 
-## Deployment
+## Deployment (backend)
 
-The hosted demo uses **Railway (backend) + Vercel (frontend)**, but any host works.
-
-### Backend (Railway / Render / Docker)
-
+The hosted demo runs the backend on **Railway**, but any host works.
 `backend/` ships with `Dockerfile`, `Procfile`, `nixpacks.toml`, and `render.yaml`.
 
 1. Create a service from the `backend/` directory.
@@ -131,18 +103,7 @@ The hosted demo uses **Railway (backend) + Vercel (frontend)**, but any host wor
    uvicorn app.main:app --host 0.0.0.0 --port $PORT
    ```
 4. Verify `https://<your-backend>/health` returns `{"status": "ok"}`.
-
-### Frontend (Vercel)
-
-1. Import the repo and set the **Root Directory** to `frontend`.
-2. Add an environment variable **`NEXT_PUBLIC_API_URL`** = your deployed backend URL
-   (e.g. `https://your-backend.up.railway.app`).
-3. Deploy. If you change the variable later, **redeploy** — `NEXT_PUBLIC_*` values are
-   baked in at build time, not read at runtime.
-
-> If the deployed dashboard hangs on loading skeletons, it almost always means
-> `NEXT_PUBLIC_API_URL` is wrong/unset or the backend is unreachable. Confirm the
-> backend `/health` endpoint responds and that CORS allows your Vercel origin.
+5. Make sure `CORS_ORIGINS` allows the origin that will call this API.
 
 ---
 
