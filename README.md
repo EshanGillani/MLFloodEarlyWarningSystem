@@ -89,5 +89,5 @@ Stop it any time with `Ctrl+C`.
 
 ## Contributing
 
-Pull requests are welcome — improve model accuracy, add features (rainfall intensity, wind
+Pull requests are welcome: improve model accuracy, add features (rainfall intensity, wind
 speed), expand to other cities, or improve documentation and tests.
