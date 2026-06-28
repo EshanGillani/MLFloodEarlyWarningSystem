@@ -2,6 +2,8 @@
 .env*
 .env.local
 .env.production
+# ...but keep the committed templates
+!.env.example
 
 # Python
 __pycache__/
